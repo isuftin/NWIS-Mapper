@@ -1,0 +1,222 @@
+[
+  {
+    "siteTypeStatus": "sw_act",
+    "siteType": "sw",
+    "siteStatus": "act",
+    "siteStatusUrl": "active",
+    "siteTypeUrl": "ES,LK,OC,ST,WE",
+    "siteTypeLookup": {
+      "ES": "Estuary",
+      "LK": "Lake",
+      "OC": "Ocean",
+      "ST": "Stream",
+      "WE": "Wetland"
+    },
+	"drawOnMapLoad": "checked",
+    "overlayLayerName": "swActLayer",
+    "tileLayerName": "swActTileLayer",
+    "legendLayerName": "Surface-Water sites (active)",
+    "singleMarkerURL": "/mapper/static/images/act/sw_act_30.png",
+    "coloMarkerURL": "/mapper/static/images/act/multi_sw_act.png",
+    "clusterMarkerURL": "/mapper/static/images/act/multi_sw_act_blank.png",
+    "spinnerOptions" : "#b3b3b3,80px,60px",
+    "overlayMinZoom": 9,
+    "tileMaxZoom": 8
+  },
+  {
+    "siteTypeStatus": "sw_ina",
+    "siteType": "sw",
+    "siteStatus": "ina",
+    "siteStatusUrl": "inactive",
+    "siteTypeUrl": "ES,LK,OC,ST,WE",
+    "siteTypeLookup": {
+      "ES": "Estuary",
+      "LK": "Lake",
+      "OC": "Ocean",
+      "ST": "Stream",
+      "WE": "Wetland"
+    },
+	"drawOnMapLoad": "unchecked",
+    "overlayLayerName": "swInaLayer",
+    "tileLayerName": "swInaTileLayer",
+    "legendLayerName": "Surface-Water sites (inactive)",
+    "singleMarkerURL": "/mapper/static/images/ina/sw_ina_30.png",
+    "coloMarkerURL": "/mapper/static/images/ina/multi_sw_ina.png",
+    "clusterMarkerURL": "/mapper/static/images/ina/multi_sw_ina_blank.png",
+    "spinnerOptions" : "#d1d1d1,80px,100px",
+    "overlayMinZoom": 9,
+    "tileMaxZoom": 8
+  },
+  {
+    "siteTypeStatus": "gw_act",
+    "siteType": "gw",
+    "siteStatus": "act",
+    "siteStatusUrl": "active",
+    "siteTypeUrl": "GW,SB",
+    "siteTypeLookup": {
+      "GW": "Well",
+      "SB": "Subsurface"
+    },
+	"drawOnMapLoad": "checked",
+    "overlayLayerName": "gwActLayer",
+    "tileLayerName": "gwActTileLayer",
+    "legendLayerName": "Groundwater sites (active)",
+    "singleMarkerURL": "/mapper/static/images/act/gw_act_30.png",
+    "coloMarkerURL": "/mapper/static/images/act/multi_gw_act.png",
+    "clusterMarkerURL": "/mapper/static/images/act/multi_gw_act_blank.png",
+    "spinnerOptions" : "#ff0000,120px,60px",
+    "overlayMinZoom": 9,
+    "tileMaxZoom": 8
+  },
+  {
+    "siteTypeStatus": "gw_ina",
+    "siteType": "gw",
+    "siteStatus": "ina",
+    "siteStatusUrl": "inactive",
+    "siteTypeUrl": "GW,SB",
+    "siteTypeLookup": {
+      "GW": "Well",
+      "SB": "Subsurface"
+    },
+	"drawOnMapLoad": "unchecked",
+    "overlayLayerName": "gwInaLayer",
+    "tileLayerName": "gwInaTileLayer",
+    "legendLayerName": "Groundwater sites (inactive)",
+    "singleMarkerURL": "/mapper/static/images/ina/gw_ina_30.png",
+    "coloMarkerURL": "/mapper/static/images/ina/multi_gw_ina.png",
+    "clusterMarkerURL": "/mapper/static/images/ina/multi_gw_ina_blank.png",
+    "spinnerOptions" : "#ff9b9b,120px,100px",
+    "overlayMinZoom": 9,
+    "tileMaxZoom": 8
+  },
+  {
+    "siteTypeStatus": "sp_act",
+    "siteType": "sp",
+    "siteStatus": "act",
+    "siteStatusUrl": "active",
+    "siteTypeUrl": "SP",
+    "siteTypeLookup": {
+      "SP": "Spring"
+    },
+	"drawOnMapLoad": "checked",
+    "overlayLayerName": "spActLayer",
+    "tileLayerName": "spActTileLayer",
+    "legendLayerName": "Springs (active)",
+    "singleMarkerURL": "/mapper/static/images/act/sp_act_30.png",
+    "coloMarkerURL": "/mapper/static/images/act/multi_sp_act.png",
+    "clusterMarkerURL": "/mapper/static/images/act/multi_sp_act_blank.png",
+	"spinnerOptions" : "#b770ff,160px,60px",
+    "overlayMinZoom": 9,
+    "tileMaxZoom": 8
+  },
+  {
+    "siteTypeStatus": "sp_ina",
+    "siteType": "sp",
+    "siteStatus": "ina",
+    "siteStatusUrl": "inactive",
+    "siteTypeUrl": "SP",
+    "siteTypeLookup": {
+      "SP": "Spring"
+    },
+	"drawOnMapLoad": "unchecked",
+    "overlayLayerName": "spInaLayer",
+    "tileLayerName": "spInaTileLayer",
+    "legendLayerName": "Springs (inactive)",
+    "singleMarkerURL": "/mapper/static/images/ina/sp_ina_30.png",
+    "coloMarkerURL": "/mapper/static/images/ina/multi_sp_ina.png",
+    "clusterMarkerURL": "/mapper/static/images/ina/multi_sp_ina_blank.png",
+	"spinnerOptions" : "#dfbfdf,160px,100px",
+    "overlayMinZoom": 9,
+    "tileMaxZoom": 8
+  },
+  {
+    "siteTypeStatus": "at_act",
+    "siteType": "at",
+    "siteStatus": "act",
+    "siteStatusUrl": "active",
+    "siteTypeUrl": "AT",
+    "siteTypeLookup": {
+      "AT": "Atmospheric"
+    },
+	"drawOnMapLoad": "checked",
+    "overlayLayerName": "atActLayer",
+    "tileLayerName": "atActTileLayer",
+    "legendLayerName": "Atmospheric sites (active)",
+    "singleMarkerURL": "/mapper/static/images/act/at_act_30.png",
+    "coloMarkerURL": "/mapper/static/images/act/multi_at_act.png",
+    "clusterMarkerURL": "/mapper/static/images/act/multi_at_act_blank.png",
+	"spinnerOptions" : "#50a7ff,200px,60px",
+    "overlayMinZoom": 9,
+    "tileMaxZoom": 8
+  },
+  {
+    "siteTypeStatus": "at_ina",
+    "siteType": "at",
+    "siteStatus": "ina",
+    "siteStatusUrl": "inactive",
+    "siteTypeUrl": "AT",
+    "siteTypeLookup": {
+      "AT": "Atmospheric"
+    },
+	"drawOnMapLoad": "unchecked",
+    "overlayLayerName": "atInaLayer",
+    "tileLayerName": "atInaTileLayer",
+    "legendLayerName": "Atmospheric sites (inactive)",
+    "singleMarkerURL": "/mapper/static/images/ina/at_ina_30.png",
+    "coloMarkerURL": "/mapper/static/images/ina/multi_at_ina.png",
+    "clusterMarkerURL": "/mapper/static/images/ina/multi_at_ina_blank.png",
+	"spinnerOptions" : "#cadfff,200px,100px",
+    "overlayMinZoom": 9,
+    "tileMaxZoom": 8
+  },
+  {
+    "siteTypeStatus": "ot_act",
+    "siteType": "ot",
+    "siteStatus": "act",
+    "siteStatusUrl": "active",
+    "siteTypeUrl": "AG,AS,AW,FA,GL,LA",
+    "siteTypeLookup": {
+      "AG": "Aggregate groundwater use",
+      "AS": "Aggregate surface-water-use",
+      "AW": "Aggregate water-use establishment",
+      "FA": "Facility",
+      "GL": "Glacier",
+      "LA": "Land"
+    },
+	"drawOnMapLoad": "checked",
+    "overlayLayerName": "otActLayer",
+    "tileLayerName": "otActTileLayer",
+    "legendLayerName": "Other sites (active)",
+    "singleMarkerURL": "/mapper/static/images/act/ot_act_30.png",
+    "coloMarkerURL": "/mapper/static/images/act/multi_ot_act.png",
+    "clusterMarkerURL": "/mapper/static/images/act/multi_ot_act_blank.png",
+	"spinnerOptions" : "#30ff30,240px,60px",
+    "overlayMinZoom": 9,
+    "tileMaxZoom": 8
+  },
+  {
+    "siteTypeStatus": "ot_ina",
+    "siteType": "ot",
+    "siteStatus": "ina",
+    "siteStatusUrl": "inactive",
+    "siteTypeUrl": "AG,AS,AW,FA,GL,LA",
+    "siteTypeLookup": {
+      "AG": "Aggregate groundwater use",
+      "AS": "Aggregate surface-water-use",
+      "AW": "Aggregate water-use establishment",
+      "FA": "Facility",
+      "GL": "Glacier",
+      "LA": "Land"
+    },
+	"drawOnMapLoad": "unchecked",
+    "overlayLayerName": "otInaLayer",
+    "tileLayerName": "otInaTileLayer",
+    "legendLayerName": "Other sites (inactive)",
+    "singleMarkerURL": "/mapper/static/images/ina/ot_ina_30.png",
+    "coloMarkerURL": "/mapper/static/images/ina/multi_ot_ina.png",
+    "clusterMarkerURL": "/mapper/static/images/ina/multi_ot_ina_blank.png",
+	"spinnerOptions" : "#afffaf,240px,100px",
+    "overlayMinZoom": 9,
+    "tileMaxZoom": 8
+  }
+]

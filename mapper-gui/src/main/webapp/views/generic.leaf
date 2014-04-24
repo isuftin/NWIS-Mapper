@@ -1,0 +1,134 @@
+<script src="{{=URL('static','js/mapper_leaflet.js')}}"></script>
+<script type="text/javascript">
+
+	// global variables
+	var map; 
+	var layerControl;
+	var siteTypes;
+	var isMobile = false;
+	
+	console.log('debug 1');
+	
+	 //layers | overlay | tile
+	var swActLayer, swActTileLayer,	swInaLayer,	swInaTileLayer,
+		gwActLayer,	gwActTileLayer,	gwInaLayer,	gwInaTileLayer,
+		spActLayer,	spActTileLayer,	spInaLayer,	spInaTileLayer,
+		atActLayer,	atActTileLayer,	atInaLayer,	atInaTileLayer,
+		otActLayer,	otActTileLayer,	otInaLayer,	otInaTileLayer;
+		
+	//get site types data as an object this can happen in the background
+	$.getJSON( "{{=URL('static', 'json/siteTypes.json')}}", function( data ) {
+		siteTypes = data;
+	});
+	
+	// when the whole document has loaded call the init function 
+	$(document).ready(init);
+	
+	function init() { 
+		//mobile test
+		if( screen.width <= 480 ) { isMobile = true;}
+	
+		//do geolocation
+		//getLocation();
+
+		//set up basemaps
+		var OSMBasemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
+		var ESRIgrayBasemap = L.tileLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {attribution: 'Copyright: &copy; 2013 Esri, DeLorme, NAVTEQ'});
+		var ESRIstreetsBasemap = L.tileLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", {attribution: 'Sources: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2013'});
+		var ESRIimageryBasemap = L.tileLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {attribution: 'Source: Esri, DigitalGlobe, GeoEye, i-cubed, USDA, USGS, AEX, Getmapping, Aerogrid, IGN, IGP, swisstopo, and the GIS User Community'});
+		var ESRIusaTopoBasemap = L.tileLayer("http://server.arcgisonline.com/ArcGIS/rest/services/USA_Topo_Maps/MapServer/tile/{z}/{y}/{x}", {opacity: 0.7,attribution: 'Copyright:&copy; 2013 National Geographic Society, i-cubed'});
+		var ESRInatGeoBasemap = L.tileLayer("http://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}", {attribution: 'National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC>'});
+		var tnmBasemap = L.tileLayer('http://navigator.er.usgs.gov/tiles/tcr.cgi/{z}/{x}/{y}.png', {maxZoom: 20,attribution: '<a href="http://www.doi.gov">U.S. Department of the Interior</a> | <a href="http://www.usgs.gov">U.S. Geological Survey</a> | <a href="http://www.usgs.gov/laws/policies_notices.html">Policies</a>'});
+		
+		//set up tile layers for site types	
+		swActTileLayer = L.tileLayer("http://nwis-mapper-tiles.s3.amazonaws.com/sw_act_tms/{z}/{y}/{x}.png", {attribution: 'david "waxin" mcculloch',zIndex:999});
+		
+		//initialize overlay layer groups
+		swActLayer = new L.layerGroup;	swInaLayer = new L.layerGroup;
+		gwActLayer = new L.layerGroup;	gwInaLayer = new L.layerGroup;
+		spActLayer = new L.layerGroup;	spInaLayer = new L.layerGroup;
+		atActLayer = new L.layerGroup;	atInaLayer = new L.layerGroup;
+		otActLayer = new L.layerGroup; 	otInaLayer = new L.layerGroup;
+
+		//basemap layers for layer control
+		var baseMaps = {
+			"OpenStreetMap": OSMBasemap,
+			"ESRI Gray": ESRIgrayBasemap,
+			"ESRI Streets": ESRIstreetsBasemap,
+			"ESRI Imagery": ESRIimageryBasemap,
+			"USA Topo": ESRIusaTopoBasemap,
+			"National Geographic": ESRInatGeoBasemap,
+			"National Map": tnmBasemap
+		};
+		
+		//overlay layers for layer control
+		var overlays = {
+			"<img src='./images/act/sw_act_30.png'/><span>Surface-Water Sites (active)</span>": swActLayer,
+			"<img src='./images/ina/sw_ina_30.png'/><span>Surface-Water Sites (inactive)</span>": swInaLayer,
+			"<img src='./images/act/gw_act_30.png'/><span>Groundwater Sites (active)</span>": gwActLayer,
+			"<img src='./images/ina/gw_ina_30.png'/><span>Groundwater Sites (inactive)</span>": gwInaLayer,
+			"<img src='./images/act/sp_act_30.png'/><span>Springs (active)</span>": spActLayer,
+			"<img src='./images/ina/sp_ina_30.png'/><span>Springs (inactive)</span>": spInaLayer,
+			"<img src='./images/act/at_act_30.png'/><span>Atmospheric Sites (active)</span>": atActLayer,
+			"<img src='./images/ina/at_ina_30.png'/><span>Atmospheric Sites (inactive)</span>": atInaLayer,
+			"<img src='./images/act/ot_act_30.png'/><span>Other Sites (active)</span>": otActLayer,
+			"<img src='./images/ina/ot_ina_30.png'/><span>Other Sites (inactive)</span>": otInaLayer
+		};
+		
+		// initialize the map on the "map" div with a given center and zoom
+		map = new L.map('map', {
+			center: [39.8, -98.6], 
+			zoom: 4,
+			layers: [ESRIstreetsBasemap, swActLayer ]
+		});
+		
+		//add overlay control
+		//layerControl = L.control.layers(baseMaps, overlays, { collapsed: false }).addTo(map);
+		layerControl = L.control.layers(baseMaps, overlays).addTo(map);
+		
+		//add scale bar
+		L.control.scale().addTo(map);
+		
+		//show initial map zoom level
+		$( "#mapZoom" ).html( "<b>MapZoom: </b>" + map.getZoom());
+		
+		//CONNECT LISTENERS
+		
+		//draw sw sites on map load
+		setTimeout( function() { drawSitesByType("sw_act") }, 1000);
+		
+		//refresh sites on extent change
+		map.on('moveend', function(evt) {
+			$( "#mapZoom" ).html( "<b>MapZoom: </b>" + map.getZoom());
+			if (isMobile) {
+				$( "#latLng" ).html(map.getCenter().lng.toFixed(3) + ", " + map.getCenter().lat.toFixed(3));
+			}
+			refreshActiveLayers();
+		});
+		
+		//show mouse coordinates
+		map.on('mousemove', function(evt) {
+			if (!isMobile) {
+				$( "#latLng" ).html(evt.latlng.lng.toFixed(3) + ", " + evt.latlng.lat.toFixed(3));
+			}
+		});
+
+		//fire an event when overlay layer is changed
+		map.on('overlayadd', function(evt) {	
+			//use lookup to find activated layer
+			var layerToDraw = getSiteInfo("legendLayerName",evt.name.split("<span>")[1].split("</span>")[0]).siteTypeStatus;
+			//draw the layer
+			drawSitesByType(layerToDraw);
+		});
+		
+		//fire an event when overlay layer is changed
+		map.on('overlayremove', function(evt) {
+			//use lookup to find deactivated layer
+			var layerToClear = getSiteInfo("legendLayerName",evt.name.split("<span>")[1].split("</span>")[0]).overlayLayerName;
+			//use global reference to clear layer
+			window[layerToClear].clearLayers()
+		});
+		
+	} //close init function
+
+</script>

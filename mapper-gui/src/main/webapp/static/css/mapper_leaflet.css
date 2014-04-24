@@ -1,0 +1,156 @@
+html, body, #map {
+  height: 100%;
+	width: 100%;
+}
+
+body {
+  padding-top:50px;
+}
+
+.navbar-brand {
+
+  padding:6px 4px;
+}
+
+.navbar {
+
+  padding:0px;
+  margin:0px;
+}
+
+
+/* labels for cluster icons */ 
+.placeMarks-label {
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: black;
+	position:relative;
+}
+
+/* mapzoom and latlong infobox */ 
+.infoBox {  
+	position:absolute;
+	padding:4px;
+	top:10px;
+	left:50px;
+	width:110px;
+	height:40px;
+	z-index:999;
+	background-color:white;
+	opacity:0.8;
+	box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+ }
+ 
+.latlng {
+	top:20px;
+}
+ 
+ .geocoder-control-input {
+  background-color: white;
+  background-repeat: no-repeat;
+  background-image: url("/mapper/static/images/search.png");
+  background-size: 14px 14px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: none;
+  font-size: 13px;
+  padding: 6px;
+  height: 26px;
+  width: 100%;
+  background-position: center center;
+  -webkit-transition: all .125s ease-in;
+  -moz-transition: all .125s ease-in;
+  -ms-transition: all .125s ease-in;
+  -o-transition: all .125s ease-in;
+  transition: all .125s ease-in;
+  cursor: pointer;
+}
+ 
+ /* since not using links in dropdowns, this makes the cursor a hand */ 
+ .dropdown-menu li:hover {
+    cursor: pointer;
+}
+
+ .dropdown-toggle li:hover {
+    cursor: pointer;
+}
+
+ .list-group a:hover {
+    cursor: pointer;
+}
+ 
+/* make all rounder borders square*/ 
+* {
+  -webkit-border-radius: 0 !important;
+     -moz-border-radius: 0 !important;
+          border-radius: 0 !important;
+} 
+
+/* reduce outrageous margins on leaflet popups*/  
+  .leaflet-rrose-content {
+	padding:4px;
+	margin:4px;
+ }
+ 
+/* reduce padding around hr lines in popups */ 
+ hr{
+    padding: 4px;
+    margin: 4px;    
+  }
+
+#loading {
+    position: absolute;
+    width: 220px;
+    height: 19px;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -110px;
+    z-index: 20001;
+}
+.leaflet-control-layers label {
+    font-weight: normal;
+    margin-bottom: 0px;
+}
+.table {
+    margin-bottom: 0px;
+}
+/*
+.leaflet-popup-content {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.leaflet-popup-content-wrapper {
+    border-radius: 5px;
+}
+*/
+.leaflet-sidebar {
+    z-index: 1020;
+
+}
+.leaflet-sidebar .close {
+    right: 6px;
+    top: 8px;
+    background: transparent;
+}
+
+@media (max-width: 767px){
+    .url-break {
+        word-break: break-all;
+        word-break: break-word;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
+}
+/* Print Handling */
+@media print {
+    .navbar {
+        display: none !important;
+    }
+    .leaflet-control-container {
+        display: none !important;
+    }
+}
