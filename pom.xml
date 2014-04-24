@@ -79,10 +79,15 @@
             <name>CIDA Public Nexus</name>
             <url>http://internal.cida.usgs.gov/maven/content/repositories/cida-thirdparty</url>
         </repository>
+        <repository>
+            <id>opengeo</id>
+            <url>http://repo.opengeo.org/</url>
+        </repository>
     </repositories>
 
     <modules>
         <module>mapper-gui</module>
+        <module>nwis-mapper-geoserver</module>
     </modules>
 
     <properties>
