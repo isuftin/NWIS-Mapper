@@ -4,7 +4,7 @@
     <parent>
         <groupId>gov.usgs.nwis.mapper</groupId>
         <artifactId>mapper-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
     </parent>
     
     <groupId>gov.usgs.nwis.mapper</groupId>
