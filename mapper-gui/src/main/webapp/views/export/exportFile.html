@@ -1,0 +1,73 @@
+{{extend 'layout_export.html'}}      
+
+<!-- /.row -->
+<div id="exportData" >
+
+
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Summary</h3>
+				</div>
+				<div class="panel-body" style="padding:0px;">
+
+				<div id="metadata">
+				</div>
+					
+				</div>
+			</div>
+				
+				
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Export a file
+					<span class="caret"></span>
+				</button>
+				<ul id="exportList" class="dropdown-menu">
+				  <li><a id="TXT" href="#">Export Text</a></li>
+				  <li><a id="Excel" href="#">Export Excel</a></li>
+				  <li><a id="CSV" href="#">Export CSV</a></li>
+				  <li><a id="RDB" href="#">Export RDB</a></li>
+				  <li><a id="KML" href="#">Export KML</a></li>
+				  <li><a id="Shape" href="#">Export Shapefile</a></li>
+				</ul>
+			</div>
+
+
+	<div class="row" style="padding:10px;"> 
+
+		<p><div id="siteList"></div></p>	
+
+	</div>
+</div>
+
+
+<script>
+	var sitesTable = $('<table><tr><th>Site Number</th><th>Site Name</th><th>Agency</th><th>Link to data</th></tr></table>').addClass('table  table-hover table-striped table-responsive table-condensed');
+	var metadataTable;
+
+	var siteArray = {{=XML(response.json(message))}}
+
+	$.each(siteArray, function(i, v) {
+		if (i == 0) {  //first record is metadata
+			metadataTable = $("<table><tr><th>Time</th><td>" + v[0] + "</td></tr><th>Number of Sites</th><td>" + v[1] + "</td></tr><th>Extent of request (West, South, East, North)</th><td>" + v[2] + "</td></tr><th>Site Type</th><td>" + v[3] + "</td></tr><th>Site Status</th><td>" + v[4] + "</td></tr><th>Requested type of data for sites</th><td>" + v[5] + "</td></tr></tr></table>").addClass('table table-condensed');
+		}
+		else { 
+			sitesTable.append("<tr><td>" + v[0] + "</td><td>" + v[1] + "</td><td>" + v[3] + "</td><td><a class='url-break' href='" + v[6] +  "' target='_blank'>Access Data</a></td></tr>");
+		}
+	});
+	
+	$('#siteList').append(sitesTable);
+	$('#metadata').append(metadataTable);
+	
+	//create hyperlinks for exports
+	//var exportURL = document.URL
+	
+	$("#exportList li a").each(function() {
+
+		var currID = $(this).attr("id");	
+		$(this).attr('href', globalExportURL.replace("exportFile","send" + currID));
+
+	});
+	
+
+</script>

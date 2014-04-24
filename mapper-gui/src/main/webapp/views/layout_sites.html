@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NWIS Mapper</title>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Core CSS - Include with every page -->
+        <!-- bootstrap -->
+		<link href="{{=URL('static', 'css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+        <!-- font-awesome -->
+		<link href="{{=URL('static', 'font-awesome/css/font-awesome.css')}}" rel="stylesheet" type="text/css" />
+ 		<!-- leaflet CSS -->
+		<link href="{{=URL('static', 'css/leaflet.css')}}" rel="stylesheet" type="text/css" />
+		<!-- rrose popup css -->
+		<link href="{{=URL('static', 'css/leaflet.rrose.css')}}" rel="stylesheet" type="text/css" />
+		<!-- markercluster css -->
+		<link href="{{=URL('static', 'css/MarkerCluster.css')}}" rel="stylesheet" type="text/css"/>
+		<!-- iconlabelcss -->
+		<link href="{{=URL('static', 'css/leaflet.iconlabel.css')}}" rel="stylesheet" type="text/css" />
+		<!-- geocoder -->
+		<link href="{{=URL('static', 'css/esri-leaflet-geocoder.css')}}" rel="stylesheet" type="text/css" />
+		<!-- geolocator -->
+		<link href="{{=URL('static', 'css/L.Control.Locate.css')}}" rel="stylesheet" type="text/css" />
+		<!-- leaflet sidebar -->
+		<link href="{{=URL('static', 'css/L.Control.Sidebar.css')}}" rel="stylesheet" type="text/css" />
+		<!-- mapper CSS -->
+		<link href="{{=URL('static', 'css/mapper_leaflet.css')}}" rel="stylesheet" type="text/css" />
+
+  </head>
+
+  <body>
+
+    <!-- include index.html from view -->
+    {{include}}
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+	
+	<script>
+	var exportURL = "{{=URL('export','exportFile')}}"
+	</script>
+	
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="{{=URL('static','js/jquery-1.11.0.min.js')}}"></script>
+	<script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
+
+	<!-- leaflet include if apptype is leaflet-->
+	{{if 'sites' in apptype:}}
+	  <script src="{{=URL('static','js/leaflet.js')}}"></script>
+		<script src="{{=URL('static','js/rrose-src.js')}}"></script>
+		<script src="{{=URL('static','js/leaflet.markercluster.js')}}"></script>
+		<script src="{{=URL('static','js/leaflet.iconlabel.js')}}"></script>
+		<script src="{{=URL('static','js/spin.min.js')}}"></script>
+		<script src="{{=URL('static','js/esri-leaflet-geocoder.js')}}"></script>
+		<script src="{{=URL('static','js/L.Control.Locate.js')}}"></script>
+		<script src="{{=URL('static','js/L.Map.Sync.js')}}"></script>
+        <script src="{{=URL('static','js/L.Control.Sidebar.js')}}"></script>
+		<script src="{{=URL('static','js/mapper_leaflet.js')}}"></script>
+
+	{{pass}}
+  </body>
+</html>
