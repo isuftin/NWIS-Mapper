@@ -7,7 +7,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     
-    <groupId>gov.usgs.cida</groupId>
+    <groupId>gov.usgs.nwis.mapper</groupId>
     <artifactId>mapper-gui</artifactId>
     <packaging>pom</packaging>
 </project>
