@@ -82,6 +82,7 @@
     </repositories>
 
     <modules>
+        <module>mapper-gui</module>
     </modules>
 
     <properties>
