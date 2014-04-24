@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>gov.usgs.nwis.mapper</groupId>
+	<artifactId>mapper-parent</artifactId>
+	<packaging>pom</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>MWIS Mapper Parent</name>
+
+	<description>
+		NWIS Mapper Parent Project
+	</description>
+
+	<organization>
+		<name>National Water Information System</name>
+		<url>http://nwis.usgs.gov</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<name>Ivan Suftin</name>
+			<email>isuftin@usgs.gov</email>
+			<id>isuftin</id>
+			<organization>Center For Integrated Data Analytics</organization>
+			<organizationUrl>http://cida.usgs.gov</organizationUrl>
+			<timezone>-6</timezone>
+		</developer>
+	</developers>
+
+	<licenses>
+		<license>
+			<name>Public Domain</name>
+			<url>http://en.wikipedia.org/wiki/Public_domain_software</url>
+			<comments>
+				All work of the US Government enter into the Public Domain within
+				the United States.  Whether that work is public domain outside of
+				the United States depends on various factors.
+			</comments>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/USGS-CIDA/NWIS-Mapper</url>
+		<connection>scm:git:git@github.com:USGS-CIDA/NWIS-Mapper.git</connection>
+		<developerConnection>scm:git:git@github.com:USGS-CIDA/NWIS-Mapper.git</developerConnection>
+	</scm>
+
+
+	<modules>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencies>
+	</dependencies>
+
+</project>
